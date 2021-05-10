@@ -1,0 +1,27 @@
+{
+  "name": "booda-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/enpepolicy/booda-bot.git"
+  },
+  "author": "Enrique Peña",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/enpepolicy/booda-bot/issues"
+  },
+  "homepage": "https://github.com/enpepolicy/booda-bot#readme",
+  "dependencies": {
+    "alert-sound-notify": "^0.0.8",
+    "axios": "^0.21.1",
+    "buda-promise": "^0.1.5",
+    "ccxt": "^1.48.89",
+    "dotenv": "^8.2.0"
+  }
+}
