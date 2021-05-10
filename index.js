@@ -1,5 +1,5 @@
-let apiKey = process.env.API_KEY || '29a19f1562430ed50293f22c626a78d3';
-let apiSecret = process.env.APP_SECRET || 'YyroQNgVdyuSifVhTmxQNUxbP+lbSsUYzu3WKNyP';
+let apiKey = '29a19f1562430ed50293f22c626a78d3';
+let apiSecret = 'YyroQNgVdyuSifVhTmxQNUxbP+lbSsUYzu3WKNyP';
 
 // playAlert = require('alert-sound-notify')
 
