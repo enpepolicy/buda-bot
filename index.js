@@ -22,14 +22,22 @@ const tick =  async(budaClient, markets, tickInterval) => {
         )
     
         // Cancel orders
-        const orders = await budaClient.order_pages(market).then( res =>  {
-            return res.orders
-        });
+        const orders = await budaClient.order_pages(market)
+            .then( res =>  {
+                return res.orders
+            })
+            .catch(e => {
+                console.log(e.message)
+            });
     
         // Get tick
-        const tick = await budaClient.ticker(market).then(result =>{
-            return result.ticker
-        });
+        const tick = await budaClient.ticker(market)
+            .then(result =>{
+                return result.ticker
+            })
+            .catch(e => {
+                console.log(e.message)
+            })
     
         // Get balances
         const balances = await budaClient.balance().then(result => {
@@ -48,7 +56,10 @@ const tick =  async(budaClient, markets, tickInterval) => {
                 await budaClient.cancel_order(order.id)
                     .then( response => {
                         console.log('\t', `Orden #${response.order.id} (${order.type}) fue cancelada desde: ${order.state}`)
-                    });
+                    })
+                    .catch(e => {
+                        console.log(e.message)
+                    })
             }
         }
         
