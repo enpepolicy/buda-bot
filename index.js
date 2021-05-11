@@ -40,10 +40,14 @@ const tick =  async(budaClient, markets, tickInterval) => {
             })
     
         // Get balances
-        const balances = await budaClient.balance().then(result => {
-            const filteredBalances = result.balances.filter(bal => {
+        const balances = await budaClient.balance()
+            .then(result => {
+                const filteredBalances = result.balances.filter(bal => {
                 return bal.id === String(base).toUpperCase() || bal.id === String(asset).toUpperCase()
             })
+            .catch(e => {
+                console.log(e.message)
+            })   
     
             return filteredBalances
         });
