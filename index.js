@@ -24,6 +24,7 @@ const tick =  async(budaClient, markets, tickInterval) => {
         // Cancel orders
         const orders = await budaClient.order_pages(market)
             .then( res =>  {
+                // console.log(res.orders)
                 return res.orders
             })
             .catch(e => {
@@ -37,18 +38,14 @@ const tick =  async(budaClient, markets, tickInterval) => {
             })
             .catch(e => {
                 console.log(e.message)
-            })
+            });
     
         // Get balances
-        const balances = await budaClient.balance()
-            .then(result => {
+        const balances = await budaClient.balance().then(result => {
                 const filteredBalances = result.balances.filter(bal => {
                 return bal.id === String(base).toUpperCase() || bal.id === String(asset).toUpperCase()
             })
-            .catch(e => {
-                console.log(e.message)
-            })   
-    
+                
             return filteredBalances
         });
     
@@ -57,13 +54,12 @@ const tick =  async(budaClient, markets, tickInterval) => {
                 order.state !== 'traded' &&
                 order.state !== 'canceled'
             ) {
-                await budaClient.cancel_order(order.id)
-                    .then( response => {
+                await budaClient.cancel_order(order.id).then( response => {
                         console.log('\t', `Orden #${response.order.id} (${order.type}) fue cancelada desde: ${order.state}`)
                     })
                     .catch(e => {
                         console.log(e.message)
-                    })
+                    });
             }
         }
         
@@ -83,8 +79,7 @@ const tick =  async(budaClient, markets, tickInterval) => {
         // Create buy order
         if (canBuy) {
             await budaClient
-                .new_order(market, "bid", "limit", buyPrice, buyVolume)
-                .then((result) => {
+                .new_order(market, "bid", "limit", buyPrice, buyVolume).then((result) => {
                     // console.log(result)
                     console.log('\t', `Created limit buy order for ${buyVolume}@${buyPrice}`)
                 })
@@ -96,8 +91,7 @@ const tick =  async(budaClient, markets, tickInterval) => {
         if (canSell) {
             // Create sell order
             await budaClient
-                .new_order(market, "ask", "limit", sellPrice, sellVolume)
-                .then((result) => {
+                .new_order(market, "ask", "limit", sellPrice, sellVolume).then((result) => {
                     // console.log(result)
                     console.log('\t', `Created limit sell order for ${sellVolume}@${sellPrice}`)
                 })
@@ -105,9 +99,6 @@ const tick =  async(budaClient, markets, tickInterval) => {
                     console.log(e.message)
                 });
         }
-    
-        
-    
         
         console.log(
             `\t Market price: ${marketPrice} \n`,
