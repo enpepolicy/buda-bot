@@ -119,10 +119,10 @@ const run = async () => {
         {
             asset: 'btc',
             base: 'cop',
-            buyAllocation: 0.23,
+            buyAllocation: 0.26,
             sellAllocation: 0.35,
-            sellSpread: 0.016,
-            buySpread: 0.015, 
+            sellSpread: 0.018,
+            buySpread: 0.017, 
             canSell: true,
             canBuy: true,
         },
