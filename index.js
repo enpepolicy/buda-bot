@@ -121,7 +121,7 @@ const run = async () => {
             base: 'cop',
             buyAllocation: 0.28,
             sellAllocation: 0.32,
-            sellSpread: 0.025,
+            sellSpread: 0.038,
             buySpread: 0.017, 
             canSell: true,
             canBuy: true,
