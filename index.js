@@ -130,10 +130,10 @@ const run = async () => {
             asset: 'ltc',
             base: 'cop',
             buyAllocation: 0.27,
-            sellAllocation: 0.27,
-            sellSpread: 0.044,
+            sellAllocation: 0.35,
+            sellSpread: 0.066,
             buySpread: 0.043, 
-            canSell: false,
+            canSell: true,
             canBuy: true,
         },
         {
