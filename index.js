@@ -140,10 +140,10 @@ const run = async () => {
             asset: 'eth',
             base: 'cop',
             buyAllocation: 0.3,
-            sellAllocation: 0.2,
-            sellSpread: 0.068, 
+            sellAllocation: 0.25,
+            sellSpread: 0.08, 
             buySpread: 0.062, 
-            canSell: false,
+            canSell: true,
             canBuy: true,
         },
         {
