@@ -1,5 +1,5 @@
-let apiKey = '29a19f1562430ed50293f22c626a78d3';
-let apiSecret = 'YyroQNgVdyuSifVhTmxQNUxbP+lbSsUYzu3WKNyP';
+let apiKey = '85e12aa33653bdaa75995570f7e2ee1c';
+let apiSecret = '/0/BvFyRFYtUPSD8QkGpmEb6k3ROGyxqgC2k915B';
 
 // playAlert = require('alert-sound-notify')
 
