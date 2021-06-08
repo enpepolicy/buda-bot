@@ -119,7 +119,7 @@ const run = async () => {
         {
             asset: 'btc',
             base: 'cop',
-            buyAllocation: 0.24,
+            buyAllocation: 0.35,
             sellAllocation: 0.35,
             sellSpread: 0.012,
             buySpread: 0.012, 
@@ -129,7 +129,7 @@ const run = async () => {
         {
             asset: 'ltc',
             base: 'cop',
-            buyAllocation: 0.2,
+            buyAllocation: 0.3,
             sellAllocation: 0.35,
             sellSpread: 0.04,
             buySpread: 0.04, 
@@ -139,7 +139,7 @@ const run = async () => {
         {
             asset: 'eth',
             base: 'cop',
-            buyAllocation: 0.19,
+            buyAllocation: 0.25,
             sellAllocation: 0.3,
             sellSpread: 0.024, 
             buySpread: 0.02, 
@@ -151,8 +151,8 @@ const run = async () => {
             base: 'btc',
             buyAllocation: 0.3,
             sellAllocation: 0.3,
-            sellSpread: 0.86, 
-            buySpread: 0.86, 
+            sellSpread: 0.81, 
+            buySpread: 0.81, 
             canSell: true,
             canBuy: true,
         },
@@ -161,8 +161,8 @@ const run = async () => {
             base: 'btc',
             buyAllocation: 0.312,
             sellAllocation: 0.36,
-            sellSpread: 0.1, 
-            buySpread: 0.1, 
+            sellSpread: 0.09, 
+            buySpread: 0.09, 
             canSell: true,
             canBuy: true,
         }
