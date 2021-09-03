@@ -169,7 +169,7 @@ const run = async () => {
     ]
 
     await tick(budaClient, markets, tickInterval);
-    setInterval(tick, tickInterval, budaClient, markets)
+//     setInterval(tick, tickInterval, budaClient, markets)
 }
 
 run();
