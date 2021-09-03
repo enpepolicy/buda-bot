@@ -22,14 +22,14 @@ const tick =  async(budaClient, markets, tickInterval) => {
         )
     
         // Cancel orders
-        const orders = await budaClient.order_pages(market)
-            .then( res =>  {
-                // console.log(res.orders)
-                return res.orders
-            })
-            .catch(e => {
-                console.log(e.message)
-            });
+//         const orders = await budaClient.order_pages(market)
+//             .then( res =>  {
+//                 // console.log(res.orders)
+//                 return res.orders
+//             })
+//             .catch(e => {
+//                 console.log(e.message)
+//             });
     
         // Get tick
         const tick = await budaClient.ticker(market)
@@ -48,19 +48,19 @@ const tick =  async(budaClient, markets, tickInterval) => {
             return filteredBalances
         });
     
-        for (const order of orders) {
-            if (
-                order.state !== 'traded' &&
-                order.state !== 'canceled'
-            ) {
-                await budaClient.cancel_order(order.id).then( response => {
-                        console.log('\t', `Orden #${response.order.id} (${order.type}) fue cancelada desde: ${order.state}`)
-                    })
-                    .catch(e => {
-                        console.log(e.message)
-                    });
-            }
-        }
+//         for (const order of orders) {
+//             if (
+//                 order.state !== 'traded' &&
+//                 order.state !== 'canceled'
+//             ) {
+//                 await budaClient.cancel_order(order.id).then( response => {
+//                         console.log('\t', `Orden #${response.order.id} (${order.type}) fue cancelada desde: ${order.state}`)
+//                     })
+//                     .catch(e => {
+//                         console.log(e.message)
+//                     });
+//             }
+//         }
         
         // Setting prices
         const marketPrice = (Number(tick.min_ask[0]) + Number(tick.max_bid[0])) / 2;
@@ -123,8 +123,8 @@ const run = async () => {
             sellAllocation: 0.45,
             sellSpread: 0.014,
             buySpread: 0.014, 
-            canSell: true,
-            canBuy: true,
+            canSell: false,
+            canBuy: false,
         },
         {
             asset: 'ltc',
@@ -133,8 +133,8 @@ const run = async () => {
             sellAllocation: 0.6,
             sellSpread: 0.03,
             buySpread: 0.05, 
-            canSell: true,
-            canBuy: true,
+            canSell: false,
+            canBuy: false,
         },
         {
             asset: 'eth',
@@ -143,8 +143,8 @@ const run = async () => {
             sellAllocation: 0.45,
             sellSpread: 0.027, 
             buySpread: 0.019, 
-            canSell: true,
-            canBuy: true,
+            canSell: false,
+            canBuy: false,
         },
         {
             asset: 'eth',
@@ -153,8 +153,8 @@ const run = async () => {
             sellAllocation: 0.3,
             sellSpread: 0.6, 
             buySpread: 0.62, 
-            canSell: true,
-            canBuy: true,
+            canSell: false,
+            canBuy: false,
         },
         {
             asset: 'ltc',
@@ -163,13 +163,13 @@ const run = async () => {
             sellAllocation: 0.3,
             sellSpread: 0.07, 
             buySpread: 0.07, 
-            canSell: true,
-            canBuy: true,
+            canSell: false,
+            canBuy: false,
         }
     ]
 
     await tick(budaClient, markets, tickInterval);
-//     setInterval(tick, tickInterval, budaClient, markets)
+    setInterval(tick, tickInterval, budaClient, markets)
 }
 
 run();
