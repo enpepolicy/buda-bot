@@ -116,16 +116,16 @@ const run = async () => {
     const tickInterval = 40000;
 
     const markets = [
-//         {
-//             asset: 'btc',
-//             base: 'cop',
-//             buyAllocation: 0.3,
-//             sellAllocation: 0.35,
-//             sellSpread: 0.016,
-//             buySpread: 0.016, 
-//             canSell: true,
-//             canBuy: true,
-//         },
+        {
+            asset: 'btc',
+            base: 'cop',
+            buyAllocation: 0.3,
+            sellAllocation: 0.35,
+            sellSpread: 0.016,
+            buySpread: 0.016, 
+            canSell: true,
+            canBuy: true,
+        },
         {
             asset: 'ltc',
             base: 'cop',
@@ -133,8 +133,8 @@ const run = async () => {
             sellAllocation: 0.6,
             sellSpread: 0.03,
             buySpread: 0.046, 
-            canSell: false,
-            canBuy: false,
+            canSell: true,
+            canBuy: true,
         },
         {
             asset: 'eth',
@@ -142,9 +142,9 @@ const run = async () => {
             buyAllocation: 0.5,
             sellAllocation: 0.2,
             sellSpread: 0.034, 
-            buySpread: 0.022, 
+            buySpread: 0.024, 
             canSell: true,
-            canBuy: false,
+            canBuy: true,
         },
         {
             asset: 'eth',
@@ -153,8 +153,8 @@ const run = async () => {
             sellAllocation: 0.3,
             sellSpread: 0.58, 
             buySpread: 0.6, 
-            canSell: false,
-            canBuy: false,
+            canSell: true,
+            canBuy: true,
         },
         {
             asset: 'ltc',
@@ -163,8 +163,8 @@ const run = async () => {
             sellAllocation: 0.3,
             sellSpread: 0.07, 
             buySpread: 0.07, 
-            canSell: false,
-            canBuy: false,
+            canSell: true,
+            canBuy: true,
         }
     ]
 
