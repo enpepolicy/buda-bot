@@ -139,11 +139,11 @@ const run = async () => {
         {
             asset: 'eth',
             base: 'cop',
-            buyAllocation: 0.5,
+            buyAllocation: 0.6,
             sellAllocation: 0.2,
             sellSpread: 0.034, 
             buySpread: 0.024, 
-            canSell: true,
+            canSell: false,
             canBuy: true,
         },
         {
