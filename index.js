@@ -133,7 +133,7 @@ const run = async () => {
             sellAllocation: 0.6,
             sellSpread: 0.03,
             buySpread: 0.046, 
-            canSell: true,
+            canSell: false,
             canBuy: true,
         },
         {
