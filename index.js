@@ -156,16 +156,16 @@ const run = async () => {
 //             canSell: true,
 //             canBuy: true,
 //         },
-        {
-            asset: 'ltc',
-            base: 'btc',
-            buyAllocation: 0.3,
-            sellAllocation: 0.3,
-            sellSpread: 0.07, 
-            buySpread: 0.07, 
-            canSell: true,
-            canBuy: true,
-        }
+//         {
+//             asset: 'ltc',
+//             base: 'btc',
+//             buyAllocation: 0.3,
+//             sellAllocation: 0.3,
+//             sellSpread: 0.07, 
+//             buySpread: 0.07, 
+//             canSell: true,
+//             canBuy: true,
+//         }
     ]
 
     await tick(budaClient, markets, tickInterval);
