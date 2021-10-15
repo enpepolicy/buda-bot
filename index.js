@@ -2,7 +2,6 @@ let playAlert = new Audio('https://sampleswap.org/samples-ghost/DRUMS%20(SINGLE%
 
 const openedAxies = [];
 
-// Example POST method implementation:
 async function postData(url = '', data = {}) {
   // Default options are marked with *
   const response = await fetch(url, {
@@ -24,6 +23,8 @@ async function postData(url = '', data = {}) {
 function openAndPush(id) {
     let win = window.open(`https://marketplace.axieinfinity.com/axie/${id}`);
     let element = win.document.createElement('script');
+    element.innerHTML = "console.log('buenacdijcdi')"
+  
     element.type='text/javascript';
   
     setTimeout(function(){ win.document.body.appendChild(element); console.log('New script appended!') }, 10000);
@@ -71,9 +72,10 @@ const tick =  async(markets) => {
                 openedAxies.push(axies[0].id);
                 playAlert.play();
                 openAndPush(axies[0].id)         
+                console.log(`Abierto axie #$[axies[0].id]`);
               }
-              console.log(axies[0].id);
             }
+            console.log('Buscando ...')
           });
 }
 
