@@ -34,19 +34,17 @@ const tick =  async(markets) => {
                     "region": null,
                     "parts": null,
                     "bodyShapes": null,
-                    "classes": [
-                        "Aquatic"
-                    ],
+                    "classes": markets.classes,
                     "stages": null,
                     "numMystic": null,
                     "pureness": [
-                        6
+                        markets.pureness
                     ],
                     "title": null,
                     "breedable": null,
                     "breedCount": [
-                        0,
-                        0
+                        markets.breedCountMin,
+                        markets.breedCountMax,
                     ],
                     "hp": [],
                     "skill": [],
@@ -58,7 +56,7 @@ const tick =  async(markets) => {
         }
         postData('https://graphql-gateway.axieinfinity.com/graphql', query)
           .then(data => {
-            console.log(data); // JSON data parsed by `data.json()` call
+            console.log(data,data,axies); // JSON data parsed by `data.json()` call
           });
 //         playAlert.play()
 }
@@ -66,13 +64,12 @@ const tick =  async(markets) => {
 const run = async () => {
     const tickInterval = 10000;
 
-    const markets = [
-            {
-                type: 'aqua',
-                purity: 6,
-                breedCount: 0
-            },
-    ]
+    const markets = {
+                classes:  ["Aquatic"],
+                pureness: 6,
+                breedCountMin: 0,
+                breedCountMax: 0
+            }
 
     await tick(markets, tickInterval);
     setInterval(tick, tickInterval, markets)
