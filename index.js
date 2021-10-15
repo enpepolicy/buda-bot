@@ -66,15 +66,15 @@ const tick =  async(markets) => {
         postData('https://graphql-gateway.axieinfinity.com/graphql', query)
           .then(data => {
             const axies = data.data.axies.results
-            
-            if(axies[0]) {
-              if (!openedAxies.includes(axies[0].id)) {
-                openedAxies.push(axies[0].id);
+            axies.forEach( (element) => {
+              if (!openedAxies.includes(element.id)) {
+                openedAxies.push(element.id);
                 playAlert.play();
-                openAndPush(axies[0].id)         
-                console.log(`Abierto axie #${axies[0].id}`);
+                openAndPush(element.id)         
+                console.log(`Abierto axie #${element.id}`);
               }
-            }
+            })
+          
             console.log('Buscando ...')
           });
 }
