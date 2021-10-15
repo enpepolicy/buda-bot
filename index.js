@@ -74,7 +74,8 @@ const tick =  async(markets) => {
                 console.log(`Abierto axie #${element.id}`);
               }
             })
-          
+
+            console.log(openedAxies)
             console.log('Buscando ...')
           });
 }
