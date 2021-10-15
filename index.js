@@ -56,9 +56,14 @@ const tick =  async(markets) => {
         }
         postData('https://graphql-gateway.axieinfinity.com/graphql', query)
           .then(data => {
-            console.log(data,data,axies); // JSON data parsed by `data.json()` call
+            const axies = data.data.axies
+            
+            if(axies[0]) {
+              console.log(axies[0].id);
+              playAlert.play();
+              window.open(`https://marketplace.axieinfinity.com/axie/${axies[0].id}`, "_blank");
+            }
           });
-//         playAlert.play()
 }
 
 const run = async () => {
