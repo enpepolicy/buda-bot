@@ -21,6 +21,13 @@ async function postData(url = '', data = {}) {
   return response.json(); // parses JSON response into native JavaScript objects
 }
 
+function openAndPush(id) {
+    let win = window.open(`https://marketplace.axieinfinity.com/axie/${id}`);
+    let element = win.document.createElement('script');
+    element.type='text/javascript';
+  
+    setTimeout(function(){ win.document.body.appendChild(element); console.log('New script appended!') }, 10000);
+}
 
 const tick =  async(markets) => {
         const query = {
@@ -60,10 +67,10 @@ const tick =  async(markets) => {
             const axies = data.data.axies.results
             
             if(axies[0]) {
-              if (openedAxies !== axies[0].id) {
+              if (!openedAxies.includes(axies[0].id)) {
                 openedAxies.push(axies[0].id);
                 playAlert.play();
-                let halo = window.open(`https://marketplace.axieinfinity.com/axie/${axies[0].id}`, "_blank");              
+                openAndPush(axies[0].id)         
               }
               console.log(axies[0].id);
             }
