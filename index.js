@@ -6,7 +6,7 @@ const tick =  async(markets) => {
 }
 
 const run = async () => {
-    const tickInterval = 40000;
+    const tickInterval = 4000;
 
     const markets = [
             {
