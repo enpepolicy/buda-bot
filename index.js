@@ -80,13 +80,13 @@ const tick =  async(markets) => {
 }
 
 const run = async () => {
-    const tickInterval = 10000;
+    const tickInterval = 5000;
 
     const markets = {
-                classes:  ["Aquatic"],
-                pureness: 6,
+                classes:  ["Aquatic", "Plant"],
+                pureness: 5,
                 breedCountMin: 0,
-                breedCountMax: 0
+                breedCountMax: 3
             }
 
     await tick(markets, tickInterval);
