@@ -1,23 +1,76 @@
 let playAlert = new Audio('https://sampleswap.org/samples-ghost/DRUMS%20(SINGLE%20HITS)/Khezie%20808s/876[kb]khezie-Crunchy-808.wav.mp3');
 
+// Example POST method implementation:
+async function postData(url = '', data = {}) {
+  // Default options are marked with *
+  const response = await fetch(url, {
+    method: 'POST', // *GET, POST, PUT, DELETE, etc.
+    mode: 'cors', // no-cors, *cors, same-origin
+    cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+    credentials: 'same-origin', // include, *same-origin, omit
+    headers: {
+      'Content-Type': 'application/json'
+      // 'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    redirect: 'follow', // manual, *follow, error
+    referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+    body: JSON.stringify(data) // body data type must match "Content-Type" header
+  });
+  return response.json(); // parses JSON response into native JavaScript objects
+}
+
+
+
 const tick =  async(markets) => {
-        console.log('hla')
-        playAlert.play()
+        const query = {
+            "operationName": "GetAxieBriefList",
+            "variables": {
+                "from": 0,
+                "size": 24,
+                "sort": "PriceAsc",
+                "auctionType": "Sale",
+                "owner": null,
+                "criteria": {
+                    "region": null,
+                    "parts": null,
+                    "bodyShapes": null,
+                    "classes": [
+                        "Aquatic"
+                    ],
+                    "stages": null,
+                    "numMystic": null,
+                    "pureness": [
+                        6
+                    ],
+                    "title": null,
+                    "breedable": null,
+                    "breedCount": [
+                        0,
+                        0
+                    ],
+                    "hp": [],
+                    "skill": [],
+                    "speed": [],
+                    "morale": []
+                }
+            },
+            "query": "query GetAxieBriefList($auctionType: AuctionType, $criteria: AxieSearchCriteria, $from: Int, $sort: SortBy, $size: Int, $owner: String) {\n  axies(auctionType: $auctionType, criteria: $criteria, from: $from, sort: $sort, size: $size, owner: $owner) {\n    total\n    results {\n      ...AxieBrief\n      __typename\n    }\n    __typename\n  }\n}\n\nfragment AxieBrief on Axie {\n  id\n  name\n  stage\n  class\n  breedCount\n  image\n  title\n  battleInfo {\n    banned\n    __typename\n  }\n  auction {\n    currentPrice\n    currentPriceUSD\n    __typename\n  }\n  parts {\n    id\n    name\n    class\n    type\n    specialGenes\n    __typename\n  }\n  __typename\n}\n"
+        }
+        postData('https://graphql-gateway.axieinfinity.com/graphql', query)
+          .then(data => {
+            console.log(data); // JSON data parsed by `data.json()` call
+          });
+//         playAlert.play()
 }
 
 const run = async () => {
-    const tickInterval = 4000;
+    const tickInterval = 10000;
 
     const markets = [
             {
-                asset: 'eth',
-                base: 'cop',
-                buyAllocation: 1,
-                sellAllocation: 0.2,
-                sellSpread: 0.034, 
-                buySpread: 0.034, 
-                canSell: false,
-                canBuy: true,
+                type: 'aqua',
+                purity: 6,
+                breedCount: 0
             },
     ]
 
