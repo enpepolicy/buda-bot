@@ -23,8 +23,8 @@ async function postData(url = '', data = {}) {
 function openAndPush(id) {
     let win = window.open(`https://marketplace.axieinfinity.com/axie/${id}`);
     let element = win.document.createElement('script');
-    element.innerHTML = "console.log('buenacdijcdi')"
-  
+    element.innerHTML = "var xpath = \"//div[text()='Buy now']\"; var matchingElement = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue.parentElement.parentElement.click(); console.log(matchingElement)"
+
     element.type='text/javascript';
   
     setTimeout(function(){ win.document.body.appendChild(element); console.log('New script appended!') }, 10000);
@@ -72,7 +72,7 @@ const tick =  async(markets) => {
                 openedAxies.push(axies[0].id);
                 playAlert.play();
                 openAndPush(axies[0].id)         
-                console.log(`Abierto axie #$[axies[0].id]`);
+                console.log(`Abierto axie #${axies[0].id}`);
               }
             }
             console.log('Buscando ...')
