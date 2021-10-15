@@ -1,7 +1,5 @@
 let playAlert = new Audio('https://sampleswap.org/samples-ghost/DRUMS%20(SINGLE%20HITS)/Khezie%20808s/876[kb]khezie-Crunchy-808.wav.mp3');
 
-const axios = require('axios')
-
 const tick =  async(markets) => {
         console.log('hla')
         playAlert.play()
