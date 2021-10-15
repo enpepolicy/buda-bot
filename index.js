@@ -1,5 +1,7 @@
 let playAlert = new Audio('https://sampleswap.org/samples-ghost/DRUMS%20(SINGLE%20HITS)/Khezie%20808s/876[kb]khezie-Crunchy-808.wav.mp3');
 
+const openedAxies = [];
+
 // Example POST method implementation:
 async function postData(url = '', data = {}) {
   // Default options are marked with *
@@ -18,7 +20,6 @@ async function postData(url = '', data = {}) {
   });
   return response.json(); // parses JSON response into native JavaScript objects
 }
-
 
 
 const tick =  async(markets) => {
@@ -56,14 +57,16 @@ const tick =  async(markets) => {
         }
         postData('https://graphql-gateway.axieinfinity.com/graphql', query)
           .then(data => {
-            console.log(data.axies)
-//             const axies = data.axies
+            const axies = data.data.axies.results
             
-//             if(axies[0]) {
-//               console.log(axies[0].id);
-//               playAlert.play();
-//               window.open(`https://marketplace.axieinfinity.com/axie/${axies[0].id}`, "_blank");
-//             }
+            if(axies[0]) {
+              if (openedAxies !== axies[0].id) {
+                openedAxies.push(axies[0].id);
+                playAlert.play();
+                let halo = window.open(`https://marketplace.axieinfinity.com/axie/${axies[0].id}`, "_blank");              
+              }
+              console.log(axies[0].id);
+            }
           });
 }
 
