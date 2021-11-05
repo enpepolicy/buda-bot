@@ -46,15 +46,10 @@ const tick =  async(markets) => {
                     "classes": markets.classes,
                     "stages": null,
                     "numMystic": null,
-                    "pureness": [
-                        markets.pureness
-                    ],
+                    "pureness": markets.pureness,
                     "title": null,
                     "breedable": null,
-                    "breedCount": [
-                        markets.breedCountMin,
-                        markets.breedCountMax,
-                    ],
+                    "breedCount": markets.breedCount,
                     "hp": [],
                     "skill": [],
                     "speed": [],
@@ -69,13 +64,18 @@ const tick =  async(markets) => {
             axies.forEach( (element) => {
               if (!openedAxies.includes(element.id)) {
                 openedAxies.push(element.id);
-                playAlert.play();
-                openAndPush(element.id)         
-                console.log(`Abierto axie #${element.id}`);
+                
+                const isAffordable = Number(element.auction.currentPriceUSD) < markets.maxPriceUSD
+                if (!element.battleInfo.banned && isAffordable){
+                  playAlert.play();
+                  openAndPush(element.id)         
+                  console.log(`Abierto axie #${element.id}`, element);
+                  console.log(`Precio de Axie (USD): ${Number(element.auction.currentPriceUSD)}`);
+                }                
               }
             })
 
-            console.log(openedAxies)
+            // console.log(openedAxies)
             console.log('Buscando ...')
           });
 }
@@ -84,10 +84,10 @@ const run = async () => {
     const tickInterval = 5000;
 
     const markets = {
-                classes:  ["Aquatic", "Plant"],
-                pureness: 5,
-                breedCountMin: 0,
-                breedCountMax: 3
+                classes: ["Aquatic", "Plant", "Dusk"],
+                pureness: null, // [ 5 ] 
+                breedCount: null, // [ 0, 1 ]
+                maxPriceUSD: 130,
             }
 
     await tick(markets, tickInterval);
