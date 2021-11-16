@@ -35,7 +35,7 @@ const tick =  async(markets) => {
             "operationName": "GetAxieBriefList",
             "variables": {
                 "from": 0,
-                "size": 24,
+                "size": 100,
                 "sort": "PriceAsc",
                 "auctionType": "Sale",
                 "owner": null,
