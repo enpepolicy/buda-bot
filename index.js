@@ -72,7 +72,7 @@ const tick =  async(markets) => {
                   playAlert.play();
                   openAndPush(element.id)         
                   console.log(`Abierto axie #${element.id}`, element);
-                  console.log(`Precio de Axie (USD): ${Number(element.auction.currentPrice / wethMultiplier )}`);
+                  console.log(`Precio de Axie (WETH): ${Number(element.auction.currentPrice / wethMultiplier )}`);
                 }                
               }
             })
