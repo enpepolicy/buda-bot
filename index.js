@@ -1,4 +1,5 @@
 let playAlert = new Audio('https://sampleswap.org/samples-ghost/DRUMS%20(SINGLE%20HITS)/Khezie%20808s/876[kb]khezie-Crunchy-808.wav.mp3');
+let wethMultiplier = 1000000000000000000;
 
 const openedAxies = [];
 
@@ -63,9 +64,10 @@ const tick =  async(markets) => {
             const axies = data.data.axies.results
             axies.forEach( (element) => {
               if (!openedAxies.includes(element.id)) {
+                const isAffordable = Number(element.auction.currentPrice) < markets.maxWETH * wethMultiplier
+                
                 openedAxies.push(element.id);
                 
-                const isAffordable = Number(element.auction.currentPriceUSD) < markets.maxPriceUSD
                 if (!element.battleInfo.banned && isAffordable){
                   playAlert.play();
                   openAndPush(element.id)         
@@ -87,7 +89,8 @@ const run = async () => {
                 classes: ["Aquatic", "Plant", "Dusk"],
                 pureness: null, // [ 5 ] 
                 breedCount: null, // [ 0, 1 ]
-                maxPriceUSD: 130,
+                // maxPriceUSD: 130,
+                maxWETH: 0.037,
             }
 
     await tick(markets, tickInterval);
