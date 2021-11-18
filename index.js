@@ -72,7 +72,7 @@ const tick =  async(markets) => {
                   playAlert.play();
                   openAndPush(element.id)         
                   console.log(`Abierto axie #${element.id}`, element);
-                  console.log(`Precio de Axie (USD): ${Number(element.auction.currentPriceUSD)}`);
+                  console.log(`Precio de Axie (USD): ${Number(element.auction.currentPrice / wethMultiplier )}`);
                 }                
               }
             })
@@ -86,11 +86,11 @@ const run = async () => {
     const tickInterval = 5000;
 
     const markets = {
-                classes: ["Aquatic", "Plant", "Dusk"],
-                pureness: null, // [ 5 ] 
-                breedCount: null, // [ 0, 1 ]
+                classes: ["Plant"],
+                pureness: [ 5, 6 ], 
+                breedCount: [ 0  ],
                 // maxPriceUSD: 130,
-                maxWETH: 0.037,
+                maxWETH: 0.04,
             }
 
     await tick(markets, tickInterval);
